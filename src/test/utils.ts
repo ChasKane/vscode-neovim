@@ -30,6 +30,7 @@ export async function wait(timeout = 1000): Promise<void> {
 }
 
 export async function attachTestNvimClient(): Promise<NeovimClient> {
+    process.env.NEOVIM_DEBUG = "1";
     const NV_HOST = process.env.NEOVIM_DEBUG_HOST || "127.0.0.1";
     const NV_PORT = process.env.NEOVIM_DEBUG_PORT || 4000;
     const conn = net.createConnection({ port: parseInt(NV_PORT as string, 10), host: NV_HOST });
